@@ -3,31 +3,15 @@ package server
 import (
 	"fmt"
 	"net/http"
-	"os"
-	"strconv"
-	"time"
 
-	_ "github.com/joho/godotenv/autoload"
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 )
 
-type Server struct {
-	port int
-}
+func Start() {
+	r := chi.NewRouter()
+	r.Use(middleware.Logger)
+	fmt.Println("Starting server on :8080")
 
-func NewServer() *http.Server {
-	port, _ := strconv.Atoi(os.Getenv("PORT"))
-	NewServer := &Server{
-		port: port,
-	}
-
-	// Declare Server config
-	server := &http.Server{
-		Addr:         fmt.Sprintf(":%d", NewServer.port),
-		Handler:      NewServer.RegisterRoutes(),
-		IdleTimeout:  time.Minute,
-		ReadTimeout:  10 * time.Second,
-		WriteTimeout: 30 * time.Second,
-	}
-
-	return server
+	http.ListenAndServe(":8080", r)
 }

@@ -1,9 +1,8 @@
 package main
 
-import (
-	"yugioh-decks/internal/server"
-)
+import "github.com/laix0n/satim/internal/api/grpc"
 
 func main() {
-	server.Start()
+	s := grpc.NewServer()
+	s.Run()
 }

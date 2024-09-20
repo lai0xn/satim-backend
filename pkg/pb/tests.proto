@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "pkg/pb";
+
+
+message Test {
+  string title = 1;
+  string result = 2;
+  bool pass = 3;
+}
+
+service TestService {
+  rpc SendTestResults(stream Test) returns (TestSummary);
+}
+
+message TestSummary {
+  int32 total_tests = 1;
+  int32 passed_tests = 2;
+  int32 failed_tests = 3;
+}
+

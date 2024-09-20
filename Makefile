@@ -5,30 +5,27 @@ all: build
 
 build:
 	@echo "Building..."
-	
-	
 	@go build -o main cmd/api/main.go
 
 # Run the application
 run:
 	@go run cmd/api/main.go
 
-
-
 # Test the application
 test:
 	@echo "Testing..."
 	@go test ./... -v
-
-
 
 # Clean the binary
 clean:
 	@echo "Cleaning..."
 	@rm -f main
 
-# Live Reload
+# Generate proto files
+proto:
+	protoc --go_out=. --go-grpc_out=. ./pkg/pb/tests.proto
 
+# Live Reload
 watch:
 	@if command -v air > /dev/null; then \
             air; \
@@ -45,5 +42,5 @@ watch:
             fi; \
         fi
 
+.PHONY: all build run test clean proto watch
 
-.PHONY: all build run test clean watch

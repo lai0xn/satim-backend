@@ -8,7 +8,8 @@ import (
 )
 
 var (
-	JWTSecret string
+	Email string
+	Pass string
 )
 
 func Load () {
@@ -21,5 +22,6 @@ func Load () {
 	}
 
 	// Load config
-	JWTSecret = os.Getenv("JWT_SECRET")
+	Email = os.Getenv("EMAIL")
+	Pass = os.Getenv("EMAIL_PASSWORD")
 }

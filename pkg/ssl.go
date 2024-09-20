@@ -7,7 +7,7 @@ import (
 	"crypto/tls"
 )
 
-func Checkssl(url string ) bool {
+func Checkssl(url string ) error {
 	client := &http.Client{
 		Transport: &http.Transport{
 			TLSClientConfig: &tls.Config{
@@ -19,15 +19,13 @@ func Checkssl(url string ) bool {
 
 	resp, err := client.Get(url)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	defer resp.Body.Close()
 
 	if resp.TLS != nil {
 		log.Println("SSL certificate exists!")
-		return true
-	} else {
-		log.Println("No SSL certificate found.")
-		return false
-	}
+	} 
+
+	return nil
 }

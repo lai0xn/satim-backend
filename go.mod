@@ -21,7 +21,10 @@ require (
 	github.com/mattn/go-runewidth v0.0.15 // indirect
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.15.2 // indirect
+	github.com/phpdave11/gofpdi v1.0.14-0.20211212211723-1f10f9844311 // indirect
+	github.com/pkg/errors v0.8.1 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
+	github.com/signintech/gopdf v0.27.1 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	golang.org/x/crypto v0.27.0 // indirect

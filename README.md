@@ -1,4 +1,4 @@
-# Project yugioh-decks
+# Project satim
 
 One Paragraph of project description goes here
 

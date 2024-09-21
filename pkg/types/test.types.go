@@ -5,7 +5,6 @@ type CheckList struct {
 	Captcha         bool 
 	Logo            bool
 	GreenNumber     bool 
-	Fraud           bool 
 	CardsValidation bool
 	ReqValidation   bool
 }

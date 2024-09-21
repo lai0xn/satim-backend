@@ -2,7 +2,7 @@ package utils
 
 import (
 	"net/smtp"
-	"yugioh-decks/config"
+	"github.com/laix0n/satim/config"
 )
 
 func send(body string, to string) error {

@@ -3,7 +3,6 @@ package utils
 import (
 	"log"
 	"strings"
-	"yugioh-decks/pkg/types"
 
 	"github.com/signintech/gopdf"
 )
@@ -33,7 +32,7 @@ func wrapText(pdf *gopdf.GoPdf, text string, maxWidth float64) []string {
 	return lines
 }
 
-func Genratepdf(checks types.CheckList) {
+func Genratepdf(checks []string) {
 	pdf := gopdf.GoPdf{}
 	pdf.Start(gopdf.Config{PageSize: gopdf.Rect{W: 595, H: 842}})
 	pdf.AddPage()

@@ -3,7 +3,8 @@ package listener
 import (
 	"context"
 	"encoding/json"
-	"log"
+
+	"github.com/charmbracelet/log"
 
 	"github.com/lai0xn/satim-dolphin/data"
 	"github.com/lai0xn/satim-dolphin/store"
@@ -14,7 +15,7 @@ func Listen(store store.Store) {
 	subsriber := store.Subscribe(context.Background(), "test:checkout")
 	defer subsriber.Close()
 	ch := subsriber.Channel()
-	log.Println("Started Listening")
+	log.Info("Started Listening")
 	for msg := range ch {
 
 		var d map[string]interface{}
@@ -34,12 +35,14 @@ func Listen(store store.Store) {
 			Config:  config,
 		}
 		if err := tester.TestTermsAndConditions(); err != nil {
-			log.Println(err)
+			log.Info(err)
 		}
+		log.Info("Terms and conditions passed")
 		if err := tester.TestPaymentMethod(); err != nil {
-			log.Println(err)
+			log.Info(err)
 		}
-		log.Println(d["host"])
+		log.Info("Payment method found")
+		log.Info(d["host"])
 		data.LoadCheckout(d, store)
 	}
 }
